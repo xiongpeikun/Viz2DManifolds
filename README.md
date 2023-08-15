@@ -14,6 +14,8 @@ If you don't want to compile the Mex file. Please change the "rk4_mex" function 
 This code works for the regular cubic grid data with a spheric inner boundary. 
 The inner boundary is located at [0,0,0] with a radius of 4 Re.
 
+As an example, the data set can be download here:
+https://doi.org/10.5281/zenodo.8248395
 
 
 For any questions:
