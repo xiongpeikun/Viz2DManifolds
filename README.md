@@ -1,5 +1,6 @@
 # Viz2DManifolds
 Matlab code for extracting 2D manifold of null points in 3D space.
+Briefly introduction and result: https://youtu.be/bHYBmKZsoGY
 
 The code saves the geodesic band for every recursion in the .mat (saved in '/bands') and Tecplot binary files (saved in '/plotfile').
 This code works for the regular cubic grid data with a spheric inner boundary. 
