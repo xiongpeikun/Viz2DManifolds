@@ -1,4 +1,4 @@
-function [ ] = leaf( tendarc,Nxyz,orbitdflg,nullpoints,parnum,deltao,xyz,btotal )
+function [ ] = leaf( tendarc,Nxyz,orbitdflg,nullpoints,parnum,trand,deltao,xyz,btotal )
 %LEAF Summary of this function goes here
 %   Main file of the GLS method
 
@@ -120,7 +120,7 @@ while arclength<tendarc
         fprintf('maxtao detected\n');
      end
     
-    [newpolanums,cbr,newadcr,newdeltas,newtaomaxs,newlost,newijkindex,newarcthetas]= adjcbr_new( Nxyz,br,parnum,cr,tao,ti,h,deltas,deltao,adcr,deltamin,taomaxs,lost,ijkindex,oijkindex,arcthetas,nullpoints,polanums,opolanums,con,xyz,btotal);% mesh adaptation
+    [newpolanums,cbr,newadcr,newdeltas,newtaomaxs,newlost,newijkindex,newarcthetas]= adjcbr_new( trand,Nxyz,br,parnum,cr,tao,ti,h,deltas,deltao,adcr,deltamin,taomaxs,lost,ijkindex,oijkindex,arcthetas,nullpoints,polanums,opolanums,con,xyz,btotal);% mesh adaptation
      
     plot3(cbr(:,1),cbr(:,2),cbr(:,3),'color',[1 0 0]); %plot the new circle
     drawnow;

@@ -1,4 +1,4 @@
-function [ newpolanums,new_cbr,new_cr,new_deltas,new_taomaxs,new_lost,new_ijkindex,newarcthetas] = adjcbr_new( Nxyz,br,parnum,cr,tao,ti,h, deltas,deltao,adcr,deltamin,taomaxs,lost,ijkindex,oijkindex,arcthetas,nullpoints,polanums,opolanums,con,xyz,btotal )
+function [ newpolanums,new_cbr,new_cr,new_deltas,new_taomaxs,new_lost,new_ijkindex,newarcthetas] = adjcbr_new( trand,Nxyz,br,parnum,cr,tao,ti,h, deltas,deltao,adcr,deltamin,taomaxs,lost,ijkindex,oijkindex,arcthetas,nullpoints,polanums,opolanums,con,xyz,btotal )
 %   adjusting mesh points
 %  
 
@@ -8,8 +8,8 @@ cdeltas=deltas;
 odeltas=deltas;
 obrs=br;
 % deltaf=max(unique(deltas));
-deltafmin=deltao*0.5;           %minimum distance between adjacent meshpoints
-deltafmax=deltao*1.5;           %maximum distance between adjacent meshpoints
+deltafmin=trand(1);           %minimum distance between adjacent meshpoints
+deltafmax=trand(2);           %maximum distance between adjacent meshpoints
 
 nu=0;                    %number of mesh points after the processing
 crt=cr';
