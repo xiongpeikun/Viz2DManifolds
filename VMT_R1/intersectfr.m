@@ -8,6 +8,7 @@ function [points, brs,oflg] = intersectfr( Nxyz,qstu,q,r,fn,ti,h,ijk,delta,arcth
 Nx=Nxyz(1);
 Ny=Nxyz(2);
 Nz=Nxyz(3);
+mex=Nxyz(5);
 
 e=0.01;
 deltam=delta*(1+e);
@@ -43,14 +44,22 @@ while dis<=grow&&stopf==0
         [ti,h,~] = timestp( Nxyz,q,qstu,ti,h,ijk,delta,xyz,btotal );
     end
     ijkb=ijk;
-    [ ~,a,aa,ijk,oflg,bflg] = rk4_mex( Nx,Ny,Nz,qstu,h,ti,ijk,xyz,btotal );
+    if mex==1
+        [ ~,a,aa,ijk,oflg,bflg] = rk4_mex( Nx,Ny,Nz,qstu,h,ti,ijk,xyz,btotal );
+    else
+        [ ~,a,aa,ijk,oflg,bflg] = rk4( Nx,Ny,Nz,qstu,h,ti,ijk,xyz,btotal );
+    end
     dislen=norm(aa(1,:)-aa(end,:));
     if dislen>delta*3
         n=dislen/delta;
         tspan=ti(2)/n;
         h=h/n;
         ti=[0,tspan];
-        [ ~,a,aa,ijk,oflg,bflg] = rk4_mex( Nx,Ny,Nz,qstu,h,ti,ijkb,xyz,btotal );
+        if mex==1
+            [ ~,a,aa,ijk,oflg,bflg] = rk4_mex( Nx,Ny,Nz,qstu,h,ti,ijkb,xyz,btotal );
+        else
+            [ ~,a,aa,ijk,oflg,bflg] = rk4( Nx,Ny,Nz,qstu,h,ti,ijkb,xyz,btotal );
+        end
     end
     
 %     plot3(aa(:,1),aa(:,2),aa(:,3));

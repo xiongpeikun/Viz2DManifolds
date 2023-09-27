@@ -7,6 +7,8 @@ Nx=Nxyz(1);
 Ny=Nxyz(2);
 Nz=Nxyz(3);
 
+mex=Nxyz(5);
+
 con=0;
 back=0;
 
@@ -24,7 +26,11 @@ if tspan<0
 end
 hh=h;
 tti=ti;
-[ ~,~,at,~,oflg] = rk4_mex( Nx,Ny,Nz,rstu,h,ti,rijk,xyz,btotal );
+if mex==1
+    [ ~,~,at,~,oflg] = rk4_mex( Nx,Ny,Nz,rstu,h,ti,rijk,xyz,btotal );
+else
+    [ ~,~,at,~,oflg] = rk4( Nx,Ny,Nz,rstu,h,ti,rijk,xyz,btotal );
+end
 if oflg==1&&length(at(:,1))>1&&length(at(:,1))<41
     len=length(at(:,1))-1;
     tspan=tspan/40*len;
@@ -48,7 +54,11 @@ if back==1
 end
 ti=[0,tspan];
 % testti=[0,h*2];
-[ ~,~,at,~,oflg2] = rk4_mex( Nx,Ny,Nz,rstu,h,ti,rijk,xyz,btotal );
+if mex==1
+    [ ~,~,at,~,oflg2] = rk4_mex( Nx,Ny,Nz,rstu,h,ti,rijk,xyz,btotal );
+else
+    [ ~,~,at,~,oflg2] = rk4( Nx,Ny,Nz,rstu,h,ti,rijk,xyz,btotal );
+end
 if length(at(:,1))==1&&oflg==oflg2&&oflg==1
     con=1;
     return;
@@ -58,11 +68,20 @@ if length(at(:,1))==1
     h=hh;
     ti=tti;
 end
-[ ~,~,at,~,~] = rk4_mex( Nx,Ny,Nz,rstu,h,ti,rijk,xyz,btotal );
+if mex==1
+    [ ~,~,at,~,~] = rk4_mex( Nx,Ny,Nz,rstu,h,ti,rijk,xyz,btotal );
+else
+    [ ~,~,at,~,~] = rk4( Nx,Ny,Nz,rstu,h,ti,rijk,xyz,btotal );
+end
+
 dflow=norm(at(1,:)-at(2,:));
 
-dmax=5e-5;
-dmin=1e-5;
+e=0.01;
+dmax=delta*e*0.5;
+dmin=dmax/10;
+
+% dmax=5e-5;
+% dmin=1e-5;
 
 if dflow>dmax
     
@@ -92,7 +111,11 @@ while dflow<dmin&&dflow>0
     else
         testti=[0,2*h];
     end
-    [ ~,~,at,~] = rk4_mex(Nx,Ny,Nz,rstu,h,testti,rijk,xyz,btotal );
+    if mex==1
+        [ ~,~,at,~] = rk4_mex(Nx,Ny,Nz,rstu,h,testti,rijk,xyz,btotal );
+    else
+        [ ~,~,at,~] = rk4(Nx,Ny,Nz,rstu,h,testti,rijk,xyz,btotal );
+    end
     if length(at(:,1))==1
         h=h/2;
         break;

@@ -24,14 +24,14 @@ taomaxs=zeros(1,numcr);
 % deltao=0.5;            %init arclength in every step
 deltamin=deltao/4;         %minimum arclength
 [ deltas,len,con,~] = adjdelta( cr,adcr,deltas,taomaxs,deltamin); 
-if numcr==20
-    deltas=repmat(deltamin,1,numcr);
-end
+% if numcr==20
+%     deltas=repmat(deltamin,1,numcr);
+% end
 deltalen=len;
 % parnum=7;
 hbar=waitbar(0,'initializing..');
 
-polanums=zeros(3,numcr);
+% polanums=zeros(3,numcr);
 
 while arclength<tendarc
     

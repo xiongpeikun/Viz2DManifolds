@@ -40,7 +40,7 @@ nullflg=0;
 cpnum=length(nullpoints(:,1));
 for n=1:cpnum
     disrcp=norm(r-nullpoints(n,:));
-    if disrcp<delta*1.5
+    if disrcp<1
         nullflg=1;
 		break;
     end

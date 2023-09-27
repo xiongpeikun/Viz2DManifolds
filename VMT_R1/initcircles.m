@@ -1,11 +1,11 @@
 
-function [ ] = initcircles( spi,Nxyz,deltao,nullijk,nullpoints,nullstus,xyz,btotal )
+function [ ] = initcircles( spi,Nxyz,r,deltao,nullijk,nullpoints,nullstus,xyz,btotal )
 %   Generate initial circle
 
 % load('datas/184xyz_8');load('datas/184btotal_8');load('datas/nulldata184_8');
 
 % deltao=0.5; %geodesic step
-r=deltao;      %Radius
+% r=deltao;      %Radius
 
 Ds=zeros(3,3,8);
 
