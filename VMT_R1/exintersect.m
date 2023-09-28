@@ -444,7 +444,7 @@ for m=1:extao
             end
             
             if m<extao&&any(dstp>0)
-                if crementp>-eps&&d2<deltap||crementp<eps&&d2>deltam
+                if crement>-eps&&crementp>-eps&&d2<deltap||crement<eps&&crementp<eps&&d2>deltam
                     brs=tmpbr;
                     di=d2;
                     bnn=nn;
@@ -452,7 +452,7 @@ for m=1:extao
                 end
             end
             
-            if m>1&&crementp>-eps&&d2>deltam&&any(dstp>0)
+            if m>1&&crementp>-eps&&(d2>deltam||crement<eps&&d2<deltap)&&any(dstp>0)
                 jishu=m-1;
                 arctheta3=larctheta3;
                 bk=bbk;

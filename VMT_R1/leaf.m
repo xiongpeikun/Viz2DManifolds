@@ -4,7 +4,7 @@ function [ ] = leaf( tendarc,Nxyz,orbitdflg,nullpoints,parnum,trand,deltao,xyz,b
 
 load arclen;
 name=num2str(arclength);
-path='.\bands\';
+path='./bands/';
 hou='.mat';
 nameb=[path,name,hou];
 load (nameb);
