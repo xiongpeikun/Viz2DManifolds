@@ -20,6 +20,16 @@ else
 end
 [ r,rl,rr,ijkcube ] = selectr( i,numcr,cr,ijkindex );  %select 3 points on Cr
 
+bcr=adcr';
+[ br,brl,brr,~ ] = selectr( i,numcr,bcr,ijkindex );
+dr=norm(r-br);
+drl=norm(rl-brl);
+drr=norm(rr-brr);
+alongflg=0;
+if dr<deltamin*0.2||drl<deltamin*0.2||drr<deltamin*0.2
+    alongflg=1;
+end
+
 polanum=zeros(3,1);
 polanuminside=zeros(3,5);
 % if r(1)>0&&r(1)<20&&r(2)>-7&&r(2)<7&&r(3)>-6.5&&r(3)<6.5
@@ -36,7 +46,7 @@ else
     deltap=delta*(1-e);
 end
 
-stepnum=80;
+stepnum=120;
 % if numcr<=80
 %     stepnum=20;
 % elseif numcr>80&&numcr<=300
@@ -401,7 +411,7 @@ ml=polanums(1,i);%previous jishu in this r
 mr=polanums(2,i);
 
 % flagb=0;
-if chg==1&&nullflg==0&&(ml>3||mr>3)
+if chg==1&&nullflg==0&&(ml>3||mr>3)&&alongflg==0
     [flagb,accbrb,d,exbr] = bkbvp(Nxyz,tao,index,r,fn,h,bti,d,exbr,ql,qr,extao2,qlijk,qrijk,qlstu,qrstu,conl,conr,deltamin,delta,deltao,dirbr,ijkcube,nad,xyz,btotal);
     if flagb==1
         br=accbrb;

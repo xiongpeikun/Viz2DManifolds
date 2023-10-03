@@ -450,6 +450,14 @@ for m=1:extao
                     bnn=nn;
                     continue;
                 end
+                if nn~=bnn
+                    if crementp>-eps&&d2<deltap||crementp<eps&&d2>deltam
+                        brs=tmpbr;
+                        di=d2;
+                        bnn=nn;
+                        continue;
+                    end
+                end
             end
             
             if m>1&&crementp>-eps&&(d2>deltam||crement<eps&&d2<deltap)&&any(dstp>0)

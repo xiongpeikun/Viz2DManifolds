@@ -9,6 +9,12 @@ delta=tcdeltas(rid);
 numcr=length(cr);
 [ r,rl,rr,~ ] = selectr( rid,numcr,cr',ijkindex ); 
 
+dr=norm(dirbr);
+alongflg=0;
+if dr<deltamin*0.7
+    alongflg=1;
+end
+
 polanum=polanums(:,rid);
 polanuminside=zeros(3,5);
 % if r(1)>0&&r(1)<20&&r(2)>-7&&r(2)<7&&r(3)>-6.5&&r(3)<6.5
@@ -73,7 +79,7 @@ extao=3;
 oextao=extao;
 mtao=11;
 
-stepnum=80;
+stepnum=120;
 % if numcr<=80
 %     stepnum=20;
 % elseif numcr>80&&numcr<=300
@@ -393,7 +399,7 @@ ml=polanums(1,rid);%previous jishu in this r
 mr=polanums(2,rid);
 
 % flagb=0;
-if chg==1&&nullflg==0&&(ml>3||mr>3)
+if chg==1&&nullflg==0&&(ml>3||mr>3)&&alongflg==0
     [flagb,accbrb,d,exbr] = bkbvp(Nxyz,tao,index,r,fn,h,bti,d,exbr,ql,qr,extao2,qlijk,qrijk,qlstu,qrstu,conl,conr,deltamin,delta,deltao,dirbr,ijkcube,nad,xyz,btotal);
     if flagb==1
         newbr=accbrb;
