@@ -91,7 +91,7 @@ datarec(Nxyz,arclength,adcr,cr,cbnum,ijkindex,btotal,xyz);
 arcthetas=repmat(0.2,1,cbnum);
 polanums=zeros(3,cbnum);
 name=num2str(arclength);
-path='.\bands\';
+path='./bands/';
 hou='.mat';
 nameb=[path,name,hou];
 save(nameb,'cr','adcr','deltas','lost','ijkindex','arclength','arcthetas','polanums');

@@ -43,7 +43,7 @@ ring=[rangeddata;rangeddata(1:2,:)];
 
 hou='.dat';
 name=num2str(arclength);
-path='.\plotfile\';
+path='./plotfile/';
 namef=[path,name,hou];
 fid = fopen(namef,'w');
 
