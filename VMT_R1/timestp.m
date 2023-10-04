@@ -76,12 +76,9 @@ end
 
 dflow=norm(at(1,:)-at(2,:));
 
-e=0.01;
-dmax=delta*e*0.5;
-dmin=dmax/10;
 
-% dmax=5e-5;
-% dmin=1e-5;
+dmax=1e-2;
+dmin=5e-3;
 
 if dflow>dmax
     
@@ -103,24 +100,26 @@ end
 
 
 
-while dflow<dmin&&dflow>0
+if dflow<dmin&&dflow>0
     
-    h=h*2;
-    if back==1
-        testti=[0,-2*h];
-    else
-        testti=[0,2*h];
-    end
+    bmin=dflow/dmin;
+    h=h/bmin;
+%     h=h*2;
+%     if back==1
+%         testti=[0,-2*h];
+%     else
+%         testti=[0,2*h];
+%     end
     if mex==1
-        [ ~,~,at,~] = rk4_mex(Nx,Ny,Nz,rstu,h,testti,rijk,xyz,btotal );
+        [ ~,~,at,~] = rk4_mex(Nx,Ny,Nz,rstu,h,ti,rijk,xyz,btotal );
     else
-        [ ~,~,at,~] = rk4(Nx,Ny,Nz,rstu,h,testti,rijk,xyz,btotal );
+        [ ~,~,at,~] = rk4(Nx,Ny,Nz,rstu,h,ti,rijk,xyz,btotal );
     end
     if length(at(:,1))==1
         h=h/2;
-        break;
+%         break;
     end
-    dflow=norm(at(1,:)-at(2,:));
+%     dflow=norm(at(1,:)-at(2,:));
     
 end
 
