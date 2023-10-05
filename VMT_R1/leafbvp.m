@@ -26,7 +26,7 @@ dr=norm(r-br);
 drl=norm(rl-brl);
 drr=norm(rr-brr);
 alongflg=0;
-if dr<deltamin*0.2||drl<deltamin*0.2||drr<deltamin*0.2
+if dr<deltamin||drl<deltamin||drr<deltamin
     alongflg=1;
 end
 

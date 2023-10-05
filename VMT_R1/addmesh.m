@@ -11,7 +11,7 @@ numcr=length(cr);
 
 dr=norm(dirbr);
 alongflg=0;
-if dr<deltamin*0.7
+if dr<deltamin*0.9
     alongflg=1;
 end
 
