@@ -20,6 +20,11 @@ if abs(bu(1))>1e-8||abs(bu(2))>1e-8||abs(bu(3))>1e-8
     tspan=tspan/2;
     ti=[0,tspan];
 end
+if abs(bu(1))<1e-10||abs(bu(2))<1e-10||abs(bu(3))<1e-10
+    h=h*2;
+    tspan=tspan*2;
+    ti=[0,tspan];
+end
 if tspan<0
     tspan=-tspan;
     back=1;
@@ -116,7 +121,15 @@ if dflow<dmin&&dflow>0
         [ ~,~,at,~] = rk4(Nx,Ny,Nz,rstu,h,ti,rijk,xyz,btotal );
     end
     if length(at(:,1))==1
-        h=h/2;
+        if abs(ti(2))/h<2
+            if back==1
+                ti=[0,-2*h];
+            else
+                ti=[0,2*h];
+            end
+        else
+            h=h/2;
+        end
 %         break;
     end
 %     dflow=norm(at(1,:)-at(2,:));
