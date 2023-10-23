@@ -17,8 +17,7 @@ the size of cubic data (Nxyz).
 
 If you don't want to compile the Mex file. Please set mex=0 in GLSmain.m.
 
-As an example, the data set can be downloaded here:
-https://doi.org/10.5281/zenodo.8248395
+
 
 
 Email: crazyxpk[at]gmail.com 
