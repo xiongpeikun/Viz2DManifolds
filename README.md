@@ -17,6 +17,15 @@ the size of cubic data (Nxyz).
 
 If you don't want to compile the Mex file. Please set mex=0 in GLSmain.m.
 
+Loaded data format: 
+Coordinates: xyz(3,Nx,Ny,Nz);   (4-D double)
+The magnetic field: btotal(3,Nx,Ny,Nz);  (4-D double)
+
+Critical Points: 
+Coordinates: nullpoints(i,3);  (ix3 double)
+Cubic grid index: nullijk(i,3);  (ix3 double)
+local interpolation inside a cubic cell: nullstu(i,3);  (ix3 double)
+where "i" denotes the number of critical points saved in the variables.
 
 
 
