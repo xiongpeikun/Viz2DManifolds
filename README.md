@@ -2,6 +2,10 @@
 Matlab code for extracting 2D manifold of null points in 3D space.
 Briefly introduction and result: https://youtu.be/bHYBmKZsoGY
 
+For using this code, please cite:
+
+Xiong, P., Fujita, S., Watanabe, M., Tanaka, T. and Cai, D. (2023), Identifying and Visualizing Terrestrial Magnetospheric Topology using Geodesic Level Set Method. Computer Graphics Forum e14994. https://doi.org/10.1111/cgf.14994
+
 The code saves the geodesic band for every recursion in the .mat (saved in '/bands') and Tecplot binary files (saved in '/plotfile').
 This code works for the regular cubic grid data with a spheric inner boundary. 
 The inner boundary is located at [0,0,0] with a radius of 4 Re.
