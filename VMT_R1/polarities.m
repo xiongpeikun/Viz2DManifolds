@@ -44,6 +44,12 @@ while m>0&&num<range%&&taolen>=m
         disbr=norm(tmpdir);
         tmparc=(dirbr*tmpdir')/(norm(dirbr)*disbr);
         
+        if m<initao
+            m=0;
+            bk=0;
+            return;
+        end
+        
         if (tmparc<-0.9&&disbr>0)
             mi=m-(tao-1);
             [ptsi,tbri,~]=intersectfr( Nxyz,qstu(mi,:),q(mi,:),r,fn,ti,h,qijk(mi,:),delta,arctheta,dirbr,xyz,btotal);
